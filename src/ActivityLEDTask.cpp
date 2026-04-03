@@ -30,7 +30,7 @@ void ActivityLEDTask::loop()
     uint64_t time = esp_timer_get_time();
     if (time >= nextLEDBlinkTime)
     {
-        nextLEDBlinkTime = time + this->blinkIntervalMs;
+        nextLEDBlinkTime = time + (uint64_t)this->blinkIntervalMs * 1000;
         digitalWrite(this->pin, !digitalRead(this->pin));
     }
 }
